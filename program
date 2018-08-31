@@ -96,3 +96,90 @@ void add(database student[],int *size)
         printf("NO MORE STUDENT CAN BE ACCOMODATED!!");
     }
 }
+//--------------Display Function-------------------
+void display(database student[],int size)
+{
+    int i;
+    printf("\nName\tClass\tDivision\tRoll_No.\n");
+    for(i=0;i<size;i++)
+    {
+        printf("%s\t%d\t%c\t%d\n"),student[i].name,student[i].clas, student[i].divi, student[i].roll);
+    }
+    printf("\n\n\n");
+}
+//--------------Search Function--------------------
+int search(database student[], int size)
+{
+ int i, rn;
+ char n[30];
+ printf("Enter the name of the student to find:");
+ scanf("%s",n);
+ printf("Enter roll no. of the same:");
+ scanf("%d", &rn);
+ for (i=0;i<size; i++)		
+  {
+   if((!(strcmp(n, student[i].name)))&&(rn==student[i].roll_no))
+    {
+      printf("students found!\n\n");
+      printf("Name\tClass\tDivision\tRoll_No.\n");
+      printf("\n%s\t%d\t%c\t%d\n", student[i].name, student[i].clas, student[i].divi, student[i].roll);
+      return 1;
+    }
+   } 
+ return 0;
+}
+//--------------Modify Function--------------------
+void modify(database student[], int size)
+{
+ int i, rn;
+ char n[30];
+ printf("Enter the name of the student to modify:");
+ scanf("%s",n);
+ printf("Enter roll no of same:");
+ scanf("%d", &rn);
+ for (i=0; i<size; i++)
+  {
+    if((!strcmp(n, student[i].name))&&(rn==student[i].roll))
+     {
+      printf("student found!\n\n");
+      printf("\nName\tClass\tDivision\tRoll_No.\n");
+      printf("%s\t%d\t%d\t%d\t\n", student[i].name, student[i].clas, students[i].divi, student[i].roll);
+      printf("\nEnter Modified details:-");
+      printf("\nEnter Name:");
+      scanf("%s",students[i].name); 
+      printf("\nEnter Roll No.:");
+      scanf("%d",&student[i].roll);
+	  printf("\nEnter Class:");
+      scanf("%d", &student[i].clas);     
+ 	  printf("\nEnter Division:");
+      scanf("%d",&student[i].divi);
+      return ;
+     }
+    }
+ return ;
+}
+//--------------Delete Function--------------------
+void deletes(database student[], int *size)
+{
+ int i, rn;
+ char n[30];
+ printf("Enter name of the student to be deleted:");
+ scanf("%s",n);
+ printf("Enter roll no of the same:");
+ scanf("%d", &rn);
+ for (i=0; i<*size; i++)
+  {
+    if((!(strcmp(n, student[i].name)))&&(rn==student[i].roll))
+     {  
+       printf("\nStudent Found!");
+       printf("\nName\tClass\tDivision\tRoll_no.\n");
+       printf("%s\t%d\t%d\t%d\n", student[i].name, student[i].clas, student[i].divi, student[i].roll);
+       printf("\nStudent Deleted\n");
+       for(;i<*size; i++)
+        {
+          student[i]=student[i+1];
+        }
+        --*size;
+     }
+  }
+}
